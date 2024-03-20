@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class FacturaCompra {
+
+    public static double calcularDescuento(double monto) {
+        double descuento = 0;
+        if (monto >= 200000) {
+            descuento = 0.15;
+        } else if (monto >= 50000) {
+            descuento = 0.02;
+        } else if (monto >= 20000) {
+            descuento = 0.015;
+        }
+        return descuento;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese su nombre: ");
+        String nombreCliente = scanner.nextLine();
+
+        System.out.print("Ingrese el monto de la compra: ");
+        double montoCompra = scanner.nextDouble();
+
+        double descuento = calcularDescuento(montoCompra);
+        double valorDescuento = montoCompra * descuento;
+        double totalPagar = montoCompra - valorDescuento;
+
+        System.out.println("\n--- Factura de compra ---");
+        System.out.println("Nombre del cliente: " + nombreCliente);
+        System.out.printf("Monto de la compra: $%.2f%n", montoCompra);
+        System.out.printf("Descuento aplicado: %.2f%%%n", descuento * 100);
+        System.out.printf("Valor del descuento: $%.2f%n", valorDescuento);
+        System.out.printf("Total a pagar: $%.2f%n", totalPagar);
+        System.out.println("\n¡Gracias por su compra, " + nombreCliente + "!");
+        
+        scanner.close();
+    }
+}
